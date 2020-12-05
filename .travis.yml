@@ -1,20 +1,19 @@
-# .travis.yml file
-language: node_js
-node_js:
-  - "10"
-  - "12"
-  - "14"
-services: mongodb  
-cache:  
-  directories:
-  - "node_modules"
-install:
-  - npm install
-script:
-  - npm test
-  deploy:
-  - provider: script
+--- 
+cache: 
+  directories: 
+    - node_modules
+deploy: 
+  - 
+    provider: script
+    script: "chmod +x ./deploy.sh && ./deploy.sh"
     skip_cleanup: true
-    script: chmod +x ./deploy.sh && ./deploy.sh
-    on:
+    true: 
       branch: master
+install: 
+  - "npm install"
+language: node_js
+node_js: 
+  - "10"
+script: 
+  - "npm test"
+services: mongodb
